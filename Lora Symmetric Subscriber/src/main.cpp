@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include <SPI.h>
 #include <LoRa.h>
+#include <Wire.h>
 
 #include "mbedtls/aes.h"
 #include "mbedtls/pk.h"
