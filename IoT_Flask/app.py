@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request
 import pymysql
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
@@ -20,7 +20,6 @@ def hello_world():
 
     # This is where we pass the sensor data to index.html
     return render_template('index.html', trendData=sensor_data)
-
 
 if __name__ == '__main__':
     app.run(debug=True)
