@@ -9,13 +9,13 @@ while True:
     device_log = str(ser.readline())[2:-5]
     print(device_log)
 
-    device_log = device_log.split()
-    sensor_id = device_log[0]
-    sensor_type = device_log[1]
-    value = device_log[2]
-    query = "INSERT INTO iot.devicelogs (sensorId, sensorType, value, dateTime)" + \
-            f" VALUES({sensor_id}, '{sensor_type}', '{value}', NOW())"
+    device_log = device_log.split('--')
+    if len(device_log) == 2:
+        lockType = device_log[0]
+        status = device_log[1]
+        query = "INSERT INTO iot.doorlocklogs (lockType, status, dateTime)" + \
+                f" VALUES('{lockType}', '{status}', NOW())"
 
-    print(query)
-    cursor.execute(query)
-    db.commit()
+        print(query)
+        cursor.execute(query)
+        db.commit()
